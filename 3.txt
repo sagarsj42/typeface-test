@@ -1,0 +1,20 @@
+We can use an RDBMS to save the monitoring data.
+Given requirement: 100 API, 1000 users
+We have 1 M requests / day
+
+
+API_MNTR (
+  uid INT,          -- user id
+  api INT,           -- name of the api (unique)
+  requested_at DATETIME,   -- timestamp of the request
+  served_in FLOAT,          -- duration needed to serve req
+)
+
+We can use SQL queries to get the necessary parameters
+For max response time api:
+
+SELECT api, AVG(served_in) AS avg_response_time
+FROM API_MNTR
+GROUP BY api
+ORDER BY avg_response_time DESC
+LIMIT 1;
