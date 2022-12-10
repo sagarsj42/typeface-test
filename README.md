@@ -2,6 +2,6 @@
 
 Requirements:
 ```
-opency-python
+opencv-python
 phonetics
 ```
